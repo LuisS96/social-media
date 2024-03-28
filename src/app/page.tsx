@@ -9,6 +9,7 @@ import { Post } from '@/components/Post/Post';
 
 // Utils
 import { fetchPosts } from '@/utils/fetchData';
+import { CreatePost } from '@/components/CreatePost/CreatePost';
 
 export default async function Home() {
   const user = await auth();
@@ -16,6 +17,9 @@ export default async function Home() {
 
   return (
     <section className='flex flex-col gap-4 px-2 max-w-[600px] w-full'>
+      <Suspense fallback={<p>Loading...</p>}>
+        <CreatePost user={user} />
+      </Suspense>
       <Suspense fallback={<p>Loading...</p>}>
         {posts.map((post) => (
           <Post key={post.id} user={user} {...post} />
