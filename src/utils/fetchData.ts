@@ -6,7 +6,7 @@ import { User, Post } from './mockData.types';
 
 const delay = 750;
 
-export const fetchUser = (): Promise<User> => {
+export const fetchUser = (): Promise<User | null> => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(mockAuthUser);
