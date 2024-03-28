@@ -8,6 +8,8 @@ import Image from 'next/image';
 // Components
 import { Card } from '@/components/Card/Card';
 import { Icon } from '@/components/Icon/Icon';
+import { ContentEditable } from '../ContentEditable/ContentEditable';
+
 // Utils
 import { Post as TPost, User } from '@/utils/mockData.types';
 
@@ -99,6 +101,20 @@ export const Post: FC<PostProps> = ({
         <div className='flex flex-row gap-2 text-slate-500 hover:text-blue-500 cursor-pointer'>
           <Icon name='share' />
         </div>
+      </div>
+      <div className='flex flex-row gap-2 items-start py-2 px-4'>
+        {user?.profilePicture ? (
+          <Image
+            src={user.profilePicture}
+            alt={''}
+            width={24}
+            height={24}
+            className='rounded-full'
+          />
+        ) : (
+          <Icon name='circleUser' className='!w-1.5 !h-1.5' variant='solid' />
+        )}
+        <ContentEditable placeholder='Add a comment...' />
       </div>
     </Card>
   );
