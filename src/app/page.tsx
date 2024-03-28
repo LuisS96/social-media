@@ -15,10 +15,12 @@ export default async function Home() {
   const posts = await fetchPosts();
 
   return (
-    <Suspense fallback={<p>Loading...</p>}>
-      {posts.map((post) => (
-        <Post key={post.id} user={user} {...post} />
-      ))}
-    </Suspense>
+    <section className='flex flex-col gap-4 px-2 max-w-[600px] w-full'>
+      <Suspense fallback={<p>Loading...</p>}>
+        {posts.map((post) => (
+          <Post key={post.id} user={user} {...post} />
+        ))}
+      </Suspense>
+    </section>
   );
 }
